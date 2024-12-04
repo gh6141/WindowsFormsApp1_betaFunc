@@ -49,10 +49,28 @@ namespace WindowsFormsApp1_betaFunc
         // y = IntegrateA(x) の関数
         static double IntegrateA(double b,int r)
         {
-            int n = 1000; // 分割数
-            // 積分を計算
-            return Integrate(0, b, n, x => fc(x,r))/ Integrate(0, 1, n, x => fc(x, r)); // 例: f(x) = 
-           // return Math.Pow(b, r);
+             return intg(b, r); //Ψ(x)で表示
+            
+          //  int n = 1000;
+           // return intg(n*(b-0), r) * intg(n*(1-b), r);  //Φn(x)で表示
+        }
+
+        static double intg(double b,int r)
+        {
+            int n = 100; 
+            if (b>=0 && b <= 1)
+            {
+                return Integrate(0, b, n, x => fc(x, r)) / Integrate(0, 1, n, x => fc(x, r));
+            }
+            else if(b>1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+           
         }
 
 
